@@ -1,0 +1,40 @@
+<!-- <p>form-a works!</p> -->
+
+<div class="container border border-dark border-3 mt-4 py-4">
+    <p class="text-center bg-primary rounded-pill p-2 header"><em>Form using dropdown menu.</em></p>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="firstName">First Name -</label>
+                <input type="text" class="form-control" id="firstName" [(ngModel)]="firstName"
+                    placeholder="Enter your first name.">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="lastName">Last Name -</label>
+                <input type="text" class="form-control" id="lastName" [(ngModel)]="lastName"
+                    placeholder="Enter your last name.">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="contactOptions">How should we contact you?</label>
+                <select class="form-control btn btn-secondary" id="contactOption" [(ngModel)]="selectedOption"
+                    (change)="onContactOptionUpdate()">
+                    <option value="">Select an option</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-6" *ngIf="selectedOption">
+            <div class="from-group">
+                <label for="contactDetails">{{ selectedOption === 'phone' ? 'Phone Number -' : 'Email Address -'
+                    }}</label>
+                <input type="text" id="contactDetails" class="form-control" [(ngModel)]="contactDetails"
+                    placeholder="Enter your {{ selectedOption === 'phone' ? 'phone number.' : 'email address.' }}">
+            </div>
+        </div>
+    </div>
+</div>

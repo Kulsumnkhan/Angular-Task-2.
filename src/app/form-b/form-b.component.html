@@ -1,0 +1,55 @@
+<!-- <p>form-b works!</p> -->
+
+<div class="container border border-danger mt-4 py-4">
+    <p class="text-center bg-primary rounded-pill p-2 header"><em>Form using radio button.</em></p>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="firstName">First Name -</label>
+                <input type="text" class="form-control" id="firstName" [(ngModel)]="firstName"
+                    placeholder="Enter your first name.">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="lastName">Last Name -</label>
+                <input type="text" class="form-control" id="lastName" [(ngModel)]="lastName"
+                    placeholder="Enter your last name.">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label>How should we contact you?</label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="contactOption" id="phoneOption" value="phone"
+                        [(ngModel)]="selectedOption" (change)="onContactOptionUpdate()">
+                    <label for="phoneOption" class="form-check-label">Phone</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="contactOption" id="emailOption" value="email"
+                        [(ngModel)]="selectedOption" (change)="onContactOptionUpdate()">
+                    <label for="emailOption" class="form-check-label">Email</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <ng-container [ngSwitch]="selectedOption">
+                <div *ngSwitchCase="'phone'">
+                    <div class="form-group">
+                        <label for="contactDetails">Phone Number -</label>
+                        <input type="text" id="contactDetails" class="form-control"
+                [(ngModel)]="contactDetails" placeholder="Enter your phone number.">
+                    </div>
+                </div>
+                <div *ngSwitchCase="'email'">
+                    <div class="form-group">
+                        <label for="contactDetails">Email Address -</label>
+                        <input type="text" id="contactDetails" class="form-control"
+                        [(ngModel)]="contactDetails" placeholder="Enter your email address.">
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
